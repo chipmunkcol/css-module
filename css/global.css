@@ -1,0 +1,4 @@
+h1 {
+  font-size: var(--typography-headline1-font-size);
+  font-weight: var(--typography-headline1-font-weight);
+}

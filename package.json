@@ -10,5 +10,8 @@
   "license": "ISC",
   "publishConfig": {
     "@chipmunkcol:registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "sweetalert2": "^11.12.4"
   }
 }

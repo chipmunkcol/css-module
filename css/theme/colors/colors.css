@@ -1,0 +1,7 @@
+@import "./palette/dark.css";
+
+:root {
+  --color-text-title: var(--darkmode-colors-grayScale-grayScale700);
+  --color-button-text-cta: var(--darkmode-colors-darkModeColors-darkWhite);
+  --color-background-default: var(--darkmode-colors-grayScale-grayScale100);
+}

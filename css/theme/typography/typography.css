@@ -1,0 +1,6 @@
+@import "./fonts/fonts.css";
+
+:root {
+  --typography-headline1-font-size: 48px;
+  --typography-headline1-font-weight: var(--font-weight-bold);
+}

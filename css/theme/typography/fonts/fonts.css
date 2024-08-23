@@ -1,0 +1,64 @@
+:root {
+  --font-family: "Pretendard", sans-serif;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-semiBold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+}
+
+/* Typography.js 참조 */
+/* light - 300 */
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 300;
+  font-display: fallback;
+  src: url("/public/fonts/Pretendard/Pretendard-Black.ttf") format("woff2"),
+    url("/public/fonts/Pretendard/Pretendard-Thin.woff") format("woff"),
+    url("/public/fonts/Pretendard/Pretendard-Thin.ttf") format("truetype");
+}
+
+/* regular - 400 */
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: url("/public/fonts/Pretendard/Pretendard-Regular.woff2") format("woff2"),
+    url("/public/fonts/Pretendard/Pretendard-Regular.woff") format("woff"),
+    url("/public/fonts/Pretendard/Pretendard-Regular.ttf") format("truetype");
+}
+
+/* semiBold - 600 */
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 600;
+  font-display: fallback;
+  src: url("/public/fonts/Pretendard/Pretendard-SemiBold.woff2") format("woff2"),
+    url("/public/fonts/Pretendard/Pretendard-SemiBold.woff") format("woff"),
+    url("/public/fonts/Pretendard/Pretendard-SemiBold.ttf") format("truetype");
+}
+
+/* bold - 700 */
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: url("/public/fonts/Pretendard/Pretendard-Bold.woff2") format("woff2"),
+    url("/public/fonts/Pretendard/Pretendard-Bold.woff") format("woff"),
+    url("/public/fonts/Pretendard/Pretendard-Bold.ttf") format("truetype");
+}
+
+/* black - 900 */
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 900;
+  font-display: fallback;
+  src: url("/public/fonts/Pretendard/Pretendard-Black.woff2") format("woff2"),
+    url("/public/fonts/Pretendard/Pretendard-Black.woff") format("woff"),
+    url("/public/fonts/Pretendard/Pretendard-Black.ttf") format("truetype");
+}

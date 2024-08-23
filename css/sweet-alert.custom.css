@@ -1,0 +1,21 @@
+@import "./theme/theme.css";
+
+.swal2-popup {
+  width: 25em;
+  border-radius: 5px !important;
+  background-color: var(--color-background-default) !important;
+  /* background-color: #ffffff !important; */
+  padding: 0 0 20px 0 !important;
+}
+
+.swal2-title {
+  padding: 5px !important;
+  margin-top: 15px !important;
+  margin: 0 auto !important;
+  /* detail 1*/
+  font-size: var(--typography-headline1-font-size) !important;
+  font-weight: var(--typography-headline1-font-weight) !important;
+  /* type - title */
+  color: var(--color-text-title) !important;
+  text-align: left !important;
+}
