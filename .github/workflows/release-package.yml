@@ -47,6 +47,9 @@ jobs:
 
       - name: Update package.json version
         run: npm version ${{ env.new_version }}
+
+      - name: Check package version
+        run: npm version patch
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
