@@ -1,1 +1,2 @@
-[github action으로 release tag 자동 생성하기](https://medium.com/prnd/github%EC%97%90%EC%84%9C-release-tag-%EC%9E%90%EB%8F%99%EC%9C%BC%EB%A1%9C-%EB%A7%8C%EB%93%A4%EC%96%B4-%EC%A3%BC%EA%B8%B0-1%EB%B6%84%EB%A7%8C%EC%97%90-%EC%84%A4%EC%A0%95-5c09a383fb08)
+[github-package 배포 자동화하기](https://medium.com/@cksal4785911/%EC%82%AC%EB%82%B4-%EB%B9%84%EA%B3%B5%EA%B0%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EB%A5%BC-github-packages%EB%A5%BC-%ED%86%B5%ED%95%B4-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B3%A0-%EC%9E%90%EB%8F%99%ED%99%94%EA%B9%8C%EC%A7%80-%ED%95%B4%EB%B3%B4%EC%9E%90-a-z-e2ea3cc97eb3)
+[github action으로 release tag 자동 생성하기](https://www.sktenterprise.com/bizInsight/blogDetail/dev/4555)
