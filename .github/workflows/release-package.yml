@@ -47,11 +47,11 @@ jobs:
 
       - name: Set up Git user
         run: |
-          git config --global user.email "${{ github.actor }}"
-          git config --global user.name "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
 
       - name: Update package.json version
-        run: npm version patch ${{ env.NEW_VERSION }} # 환경 변수에서 버전 가져오기
+        run: npm version ${{ env.NEW_VERSION }} # 환경 변수에서 버전 가져오기
 
       - run: npm publish
         env:
