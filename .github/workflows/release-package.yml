@@ -30,7 +30,7 @@ jobs:
 
       - name: Store new version in variable
         id: store_version
-        run: echo "NEW_VERSION=${{ steps.tag_version.outputs.new_tag }}" >> $GITHUB_ENV
+        run: echo "NEW_VERSION=${{ steps.tag_version.outputs.new_tag }}" >> version.txt
 
   publish-gpr:
     needs: setup-build-deploy
@@ -53,8 +53,9 @@ jobs:
 
       - name: Debug NEW_VERSION
         run: |
-          echo "$NEW_VERSION"
-          echo "NEW_VERSION=${{ env.NEW_VERSION }}"
+          cat version.txt
+          NEW_VERSION=$(cat version.txt)
+          echo "NEW_VERSION=${NEW_VERSION}"
 
       - name: Update package.json version
         run: |
