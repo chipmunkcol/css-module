@@ -29,7 +29,7 @@ jobs:
           body: ${{ steps.tag_version.outputs.changelog }}
 
   publish-gpr:
-    # needs: build
+    needs: setup-build-deploy
     runs-on: ubuntu-latest
     permissions:
       packages: write
