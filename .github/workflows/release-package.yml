@@ -51,6 +51,7 @@ jobs:
 
       - name: Update package.json version
         run: |
+          export NEW_VERSION=${{ steps.tag_version.outputs.new_tag }}
           echo "Updating package.json version to $NEW_VERSION"
           npm version $NEW_VERSION --no-git-tag-version || true
           git add package.json
