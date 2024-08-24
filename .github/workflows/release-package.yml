@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-  # release:
-  #   types: [created]
+  release:
+    types: [created]
 
 jobs:
   build:
@@ -22,8 +22,8 @@ jobs:
         with:
           tag_name: ${{ steps.extract_version_name.outputs.version }}
           release_name: ${{ steps.extract_version_name.outputs.version }}
-        # run: echo ::set-output name=version::$(node -p "require('./package.json').version")
-
+          draft: false
+          prerelease: false
       - uses: actions/setup-node@v4
         with:
           node-version: 16
@@ -36,6 +36,7 @@ jobs:
     permissions:
       packages: write
       contents: read
+      issues: read # 추가: 이슈 읽기 권한
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
