@@ -46,7 +46,7 @@ jobs:
       - run: npm ci
 
       - name: Update package.json version
-        run: npm version patch "$NEW_VERSION"
+        run: npm version patch ${{ env.NEW_VERSION }} # 환경 변수에서 버전 가져오기
 
       - run: npm publish
         env:
