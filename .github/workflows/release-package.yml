@@ -49,10 +49,11 @@ jobs:
 
       - name: Update package.json version
         run: |
-          echo "Updating package.json version to ${{env.NEW_VERSION}}"
-          npm version ${{env.NEW_VERSION}} --no-git-tag-version || true
+          echo "Updating package.json version to ${NEW_VERSION}"
+          echo "Updating package.json version to ${NEW_VERSION}"
+          npm version ${NEW_VERSION} --no-git-tag-version || true
           git add package.json
-          git commit -m "Update version to ${{env.NEW_VERSION}}" || echo "No changes to commit"
+          git commit -m "Update version to ${NEW_VERSION}" || echo "No changes to commit"
 
       - run: npm publish
         env:
