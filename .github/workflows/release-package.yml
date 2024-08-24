@@ -21,8 +21,9 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Store new version in environment variable
-        run: echo "NEW_VERSION=${{ steps.tag_version.outputs.new_tag }}" >> $GITHUB_ENV # 새로운 버전을 환경 변수에 저장
+      - name: Store new version in variable
+        id: store_version
+        run: echo "NEW_VERSION=${{ steps.tag_version.outputs.new_tag }}"
 
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
@@ -51,7 +52,7 @@ jobs:
           git config --global user.name "${{ github.actor }}"
 
       - name: Debug NEW_VERSION
-        run: echo "NEW_VERSION=${{ env.NEW_VERSION }}"
+        run: echo "NEW_VERSION=${{ steps.store_version.outputs.new_version }}"
 
       - name: Update package.json version
         run: |
