@@ -51,8 +51,11 @@ jobs:
           git config --global user.name "${{ github.actor }}"
 
       - name: Update package.json version
-        run: npm version ${{ env.NEW_VERSION }} # 환경 변수에서 버전 가져오기
-
+        run: |
+          npm version ${{ env.NEW_VERSION }}
+          git add package.json
+          git commit -m "Update version to ${NEW_VERSION}"
+          git tag ${NEW_VERSION}
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
