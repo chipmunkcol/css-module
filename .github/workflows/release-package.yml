@@ -45,6 +45,11 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
 
+      - name: Set up Git user
+        run: |
+          git config --global user.email "${{ github.actor }}"
+          git config --global user.name "${{ github.actor }}@users.noreply.github.com"
+
       - name: Update package.json version
         run: npm version patch ${{ env.NEW_VERSION }} # 환경 변수에서 버전 가져오기
 
