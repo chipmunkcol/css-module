@@ -22,7 +22,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Store new version in environment variable
-        run: echo "new_version=${{ steps.tag_version.outputs.new_tag }}" >> $GITHUB_ENV # 새로운 버전을 환경 변수에 저장
+        run: echo "NEW_VERSION=${{ steps.tag_version.outputs.new_tag }}" >> $GITHUB_ENV # 새로운 버전을 환경 변수에 저장
 
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
@@ -46,10 +46,8 @@ jobs:
       - run: npm ci
 
       - name: Update package.json version
-        run: npm version ${{ env.new_version }}
+        run: npm version patch "$NEW_VERSION"
 
-      - name: Check package version
-        run: npm version patch
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
