@@ -52,7 +52,10 @@ jobs:
           git config --global user.name "${{ github.actor }}"
 
       - name: Debug NEW_VERSION
-        run: echo "NEW_VERSION=${{ steps.store_version.outputs.new_version }}"
+        run: |
+          echo "${NEW_VERSION}"
+          echo "NEW_VERSION=${{ steps.store_version.outputs.new_tag }}"
+          echo "${NEW_VERSION}"
 
       - name: Update package.json version
         run: |
