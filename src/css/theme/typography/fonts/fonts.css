@@ -14,7 +14,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: fallback;
-  src: url("/public/fonts/Pretendard/Pretendard-Black.ttf") format("woff2"),
+  src: url("/public/fonts/Pretendard/Pretendard-Thin.woff2") format("woff2"),
     url("/public/fonts/Pretendard/Pretendard-Thin.woff") format("woff"),
     url("/public/fonts/Pretendard/Pretendard-Thin.ttf") format("truetype");
 }

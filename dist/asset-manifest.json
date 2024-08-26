@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.js": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/main.js",
+    "assets/fonts/Pretendard-SemiBold.ttf": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/assets/fonts/Pretendard-SemiBold.ttf",
+    "assets/fonts/Pretendard-Black.ttf": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/assets/fonts/Pretendard-Black.ttf",
+    "assets/fonts/Pretendard-Thin.ttf": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/assets/fonts/Pretendard-Thin.ttf",
+    "assets/fonts/Pretendard-Regular.ttf": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/assets/fonts/Pretendard-Regular.ttf",
+    "assets/fonts/Pretendard-Bold.ttf": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/assets/fonts/Pretendard-Bold.ttf",
+    "assets/fonts/Pretendard-Black.woff": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/assets/fonts/Pretendard-Black.woff",
+    "assets/fonts/Pretendard-SemiBold.woff": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/assets/fonts/Pretendard-SemiBold.woff",
+    "assets/fonts/Pretendard-Bold.woff": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/assets/fonts/Pretendard-Bold.woff",
+    "assets/fonts/Pretendard-Regular.woff": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/assets/fonts/Pretendard-Regular.woff",
+    "assets/fonts/Pretendard-Thin.woff": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/assets/fonts/Pretendard-Thin.woff",
+    "assets/fonts/Pretendard-Black.woff2": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/assets/fonts/Pretendard-Black.woff2",
+    "assets/fonts/Pretendard-SemiBold.woff2": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/assets/fonts/Pretendard-SemiBold.woff2",
+    "assets/fonts/Pretendard-Bold.woff2": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/assets/fonts/Pretendard-Bold.woff2",
+    "assets/fonts/Pretendard-Regular.woff2": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/assets/fonts/Pretendard-Regular.woff2",
+    "assets/fonts/Pretendard-Thin.woff2": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/assets/fonts/Pretendard-Thin.woff2",
+    "static/media/Pretendard-SemiBold.woff2": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/static/media/Pretendard-SemiBold.ab62def3c0e761a9dc1b.woff2",
+    "static/media/Pretendard-Regular.woff2": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/static/media/Pretendard-Regular.3da7a744c5c95bbaa4c8.woff2",
+    "static/media/Pretendard-SemiBold.woff": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/static/media/Pretendard-SemiBold.a58081d3ddd9488ef752.woff",
+    "static/media/Pretendard-Regular.woff": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/static/media/Pretendard-Regular.6b3a4154feeb31f6c826.woff",
+    "static/media/Pretendard-SemiBold.ttf": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/static/media/Pretendard-SemiBold.9f4b0cc1c51c7e674f7c.ttf",
+    "static/media/Pretendard-Black.woff2": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/static/media/Pretendard-Black.58c85d8fa0913b3edeb8.woff2",
+    "static/media/Pretendard-Regular.ttf": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/static/media/Pretendard-Regular.a726683130eec14ea9c8.ttf",
+    "static/media/Pretendard-Black.woff": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/static/media/Pretendard-Black.ef355947e53082421491.woff",
+    "static/media/Pretendard-Bold.woff2": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/static/media/Pretendard-Bold.9aceff8ecbb642f6197d.woff2",
+    "static/media/Pretendard-Thin.woff2": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/static/media/Pretendard-Thin.01a3a5a7061c956d924e.woff2",
+    "static/media/Pretendard-Black.ttf": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/static/media/Pretendard-Black.173ed395fc4d55939e9f.ttf",
+    "static/media/Pretendard-Bold.woff": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/static/media/Pretendard-Bold.22c314936d969f6e4dda.woff",
+    "static/media/Pretendard-Thin.woff": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/static/media/Pretendard-Thin.c57c6f6c9fd6792db4bc.woff",
+    "static/media/Pretendard-Bold.ttf": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/static/media/Pretendard-Bold.58766e5624018b9cb510.ttf",
+    "static/media/Pretendard-Thin.ttf": "C:/Users/USER/Desktop/연봉6천/git-clone/css-module/public/static/media/Pretendard-Thin.729daa607cce489b0bf2.ttf"
+  },
+  "entrypoints": [
+    "main.js"
+  ]
+}

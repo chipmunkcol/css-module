@@ -1,5 +1,9 @@
 @import "./theme/theme.css";
 
+body {
+  font-family: "Pretendard", sans-serif;
+}
+
 .swal2-popup {
   width: 25em;
   border-radius: 5px !important;
