@@ -23,6 +23,9 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Install dependencies
+        run: npm ci
+
       - name: Build project
         run: |
           # 여기에 필요한 빌드 명령어 추가
@@ -45,9 +48,6 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Set up Git user
         run: |
