@@ -27,8 +27,11 @@ jobs:
           name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
 
-      - name: Set NEW_VERSION as an environment variable
-        run: echo "NEW_VERSION=${{ steps.tag_version.outputs.new_tag }}" >> $GITHUB_ENV
+      - name: Update package.json version
+        run: |
+          npm version ${{ steps.tag_version.outputs.new_tag }}
+          git add package.json
+          git commit -m "Update version to $NEW_VERSION" || echo "No changes to commit"
 
   publish-gpr:
     needs: setup-build-deploy
@@ -48,14 +51,6 @@ jobs:
         run: |
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git config --global user.name "${{ github.actor }}"
-
-      - name: Update package.json version
-        run: |
-          export NEW_VERSION=${{ steps.tag_version.outputs.new_tag }}
-          echo "Updating package.json version to $NEW_VERSION"
-          npm version $NEW_VERSION --no-git-tag-version || true
-          git add package.json
-          git commit -m "Update version to $NEW_VERSION" || echo "No changes to commit"
 
       - run: npm publish
         env:
