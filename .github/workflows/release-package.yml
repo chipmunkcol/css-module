@@ -1,85 +1,55 @@
-name: Node.js Package
+name: github action tag release
 
 on:
   push:
     branches:
       - main
-  # release:
-  #   types: [created]
 
 jobs:
-  publish:
+  setup-build-deploy:
+    name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
     permissions:
-      contents: read
       packages: write
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@chipmunkcol"
-      - uses: technote-space/package-version-check-action@v1
+          node-version: 18
+          registry-url: https://npm.pkg.github.com/
+      - run: npm ci
+
+      - name: Set up Git user
+        run: |
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.1
         with:
-          COMMIT_DISABLED: 1
-      - run: npm install
-      - run: npm run build
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create a GitHub release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
+          body: ${{ steps.tag_version.outputs.changelog }}
+          # files: |
+          #   dist/*
+          #   package.json
+
+      - name: Update package.json version
+        run: |
+          npm version ${{ steps.tag_version.outputs.new_tag }}
+          git add package.json
+          git commit -m "Update version to $NEW_VERSION" || echo "No changes to commit"
+
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-# name: github action tag release
-
-# on:
-#   push:
-#     branches:
-#       - main
-
-# jobs:
-#   setup-build-deploy:
-#     name: Setup, Build, and Deploy
-#     runs-on: ubuntu-latest
-#     permissions:
-#       packages: write
-#       contents: write
-
-#     steps:
-#       - uses: actions/checkout@v4
-#       - uses: actions/setup-node@v4
-#         with:
-#           node-version: 18
-#           registry-url: https://npm.pkg.github.com/
-#       - run: npm ci
-
-#       - name: Set up Git user
-#         run: |
-#           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-#           git config --global user.name "${{ github.actor }}"
-#         env:
-#           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-#       - name: Bump version and push tag
-#         id: tag_version
-#         uses: mathieudutour/github-tag-action@v6.1
-#         with:
-#           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-#       - name: Create a GitHub release
-#         uses: ncipollo/release-action@v1
-#         with:
-#           tag: ${{ steps.tag_version.outputs.new_tag }}
-#           name: Release ${{ steps.tag_version.outputs.new_tag }}
-#           body: ${{ steps.tag_version.outputs.changelog }}
-#           files: |
-#             dist/*
-#             package.json
-
-#       - name: Update package.json version
-#         run: |
-#           npm version ${{ steps.tag_version.outputs.new_tag }}
-#           git add package.json
-#           git commit -m "Update version to $NEW_VERSION" || echo "No changes to commit"
-
-#       - run: npm publish
-#         env:
-#           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
