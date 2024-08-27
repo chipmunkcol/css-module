@@ -1,5 +1,5 @@
 const path = require("path");
-// const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 
 module.exports = {
   entry: "./src/index.js", // 해당 경로 index.js을 build 해서
@@ -7,7 +7,7 @@ module.exports = {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"), // 해당 경로에 main.js 로 output 해준다
     // publicPath: "/dist/",
-    // assetModuleFilename: "static/media/[name].[hash][ext]",
+    assetModuleFilename: "static/media/[name].[hash][ext]",
   },
   module: {
     rules: [
@@ -30,7 +30,7 @@ module.exports = {
       },
     ],
   },
-  // plugins: [new WebpackManifestPlugin()],
+  plugins: [new WebpackManifestPlugin()],
   // plugins: [
   //   new WebpackManifestPlugin({
   //     fileName: "asset-manifest.json",
