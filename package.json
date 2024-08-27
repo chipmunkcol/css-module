@@ -12,6 +12,7 @@
     "@chipmunkcol:registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
+    "@chipmunkcol/css-module": "^0.0.36",
     "sweetalert2": "^11.12.4",
     "webpack-manifest-plugin": "^5.0.0"
   },
