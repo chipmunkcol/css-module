@@ -1,0 +1,37 @@
+name: NodeJS with Webpack
+
+on:
+  push:
+    branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    # - name: Build
+    #   run: |
+    #     npm install
+    #     npx webpack
+
+    - run: npm ci # package-lock.json 에 적혀있는 패키지를 그~대로 설치합니다.
+    - run: npm run build # package.json에 빌드 스크립트를 여기 적으세요
+    
+    # publish_dir에 들어있는 파일들을 gh-pages 브랜치에 올려줍니다.
+    - uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
