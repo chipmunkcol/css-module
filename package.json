@@ -1,11 +1,11 @@
 {
   "name": "@chipmunkcol/css-module",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "",
   "main": "src/index.js",
   "scripts": {
-  "build": "webpack --config webpack.config.js",
-  "release": "npm version patch && git push --follow-tags && gh release create v$(node -e \"import { readFileSync } from 'fs'; import { join } from 'path'; console.log(JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8')).version);\") dist/* --title \"Release v$(node -e \"import { readFileSync } from 'fs'; import { join } from 'path'; console.log(JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8')).version);\")\" --notes \"Automated release\""
+    "build": "webpack --config webpack.config.js",
+    "release": "npm version patch && git push --follow-tags && gh release create v$(node -e \"import { readFileSync } from 'fs'; import { join } from 'path'; console.log(JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8')).version);\") dist/* --title \"Release v$(node -e \"import { readFileSync } from 'fs'; import { join } from 'path'; console.log(JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8')).version);\")\" --notes \"Automated release\""
   },
   "author": "",
   "license": "ISC",
