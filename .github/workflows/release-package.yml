@@ -1,9 +1,8 @@
 name: Node.js Package
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [created]
 
 jobs:
   build:
@@ -14,8 +13,6 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npm test
 
   publish-gpr:

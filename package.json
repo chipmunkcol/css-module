@@ -4,8 +4,12 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "test": "exit 0",
     "build": "webpack --config webpack.config.js",
     "release": "npm version patch && git push --follow-tags && gh release create v$(node -e \"import { readFileSync } from 'fs'; import { join } from 'path'; console.log(JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8')).version);\") dist/* --title \"Release v$(node -e \"import { readFileSync } from 'fs'; import { join } from 'path'; console.log(JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8')).version);\")\" --notes \"Automated release\""
+  },
+  "publishConfig": {
+    "@chipmunkcol:registry": "https://npm.pkg.github.com"
   },
   "author": "",
   "license": "ISC",
