@@ -33,15 +33,18 @@ jobs:
 
       - name: Create a zip of dist folder
         run: |
-          zip -r dist.zip dist
+          mkdir release
+          cp -r dist release/  # dist 폴더만 복사
+          cd release
+          zip -r dist.zip .  # dist.zip 생성
 
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ steps.tag_version.outputs.new_tag }}
-          name: Release ${{ steps.tag_version.outputs.new_tag }}
-          body: ${{ steps.tag_version.outputs.changelog }}
-          files: dist.zip # dist.zip 파일을 Release에 포함
+          tag: ${{ github.run_number }} # 릴리즈 태그 설정
+          name: Release ${{ github.run_number }}
+          body: "Release for dist folder only"
+          files: release/dist.zip # dist.zip 파일을 Release에 포함
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -54,11 +57,20 @@ jobs:
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git config --global user.name "${{ github.actor }}"
 
+      - name: Check Git status
+        run: |
+          if [[ $(git status --porcelain) ]]; then
+            echo "Git working directory is not clean, committing changes..."
+            git add .
+            git commit -m "Update before version updates" || echo "No changes to commit"
+          else
+            echo "Git working directory is clean."
+
       - name: Update package.json version
         run: |
           npm version ${{ steps.tag_version.outputs.new_tag }}
-      #     git add package.json
-      #     git commit -m "Update version to ${{ steps.tag_version.outputs.new_tag }}" || echo "No changes to commit"
+          git add package.json
+          git commit -m "Update version to ${{ steps.tag_version.outputs.new_tag }}" || echo "No changes to commit"
 
       - name: Publish to npm
         run: npm publish
