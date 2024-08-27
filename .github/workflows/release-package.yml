@@ -27,14 +27,6 @@ jobs:
           name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
 
-        # name: deploy to npm
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 16
-          registry-url: https://npm.pkg.github.com/
-      - run: npm ci
-
       - name: Set up Git user
         run: |
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
@@ -44,6 +36,15 @@ jobs:
           npm version ${{ steps.tag_version.outputs.new_tag }}
           git add package.json
           git commit -m "Update version to $NEW_VERSION" || echo "No changes to commit"
+
+        # name: deploy to npm
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+
       - run: npm publish
+      - run: npm ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
