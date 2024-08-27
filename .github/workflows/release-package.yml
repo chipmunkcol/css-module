@@ -14,65 +14,67 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
       - name: Bump version and push tag
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build project
-        run: |
-          # 여기에 필요한 빌드 명령어 추가
-          npm run build
-
-      - name: Create a zip of dist folder
-        run: |
-          mkdir release
-          cp -r dist release/  # dist 폴더만 복사
-          cd release
-          zip -r dist.zip .  # dist.zip 생성
-
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ github.run_number }} # 릴리즈 태그 설정
-          name: Release ${{ github.run_number }}
-          body: "Release for dist folder only"
-          files: release/dist.zip # dist.zip 파일을 Release에 포함
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
+          body: ${{ steps.tag_version.outputs.changelog }}
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+        # name: deploy to npm
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
+      - run: npm ci
 
       - name: Set up Git user
         run: |
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git config --global user.name "${{ github.actor }}"
 
-      - name: Check Git status
-        run: |
-          if [[ $(git status --porcelain) ]]; then
-            echo "Git working directory is not clean, committing changes..."
-            git add .
-            git commit -m "Update before version updates" || echo "No changes to commit"
-          else
-            echo "Git working directory is clean."
-
       - name: Update package.json version
         run: |
           npm version ${{ steps.tag_version.outputs.new_tag }}
           git add package.json
-          git commit -m "Update version to ${{ steps.tag_version.outputs.new_tag }}" || echo "No changes to commit"
+          git commit -m "Update version to $NEW_VERSION" || echo "No changes to commit"
 
-      - name: Publish to npm
-        run: npm publish
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # publish-gpr:
+  #   needs: setup-build-deploy
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     packages: write
+  #     contents: write
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 16
+  #         registry-url: https://npm.pkg.github.com/
+  #     - run: npm ci
+
+  #     - name: Set up Git user
+  #       run: |
+  #         git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+  #         git config --global user.name "${{ github.actor }}"
+
+  #     - name: Update package.json version
+  #       run: |
+  #         npm version ${{ env.NEW_VERSION }}
+  #         git add package.json
+  #         git commit -m "Update version to $NEW_VERSION" || echo "No changes to commit"
+
+  #     - run: npm publish
+  #       env:
+  #         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
