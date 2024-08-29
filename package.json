@@ -10,9 +10,6 @@
   },
   "author": "",
   "license": "ISC",
-  "publishConfig": {
-    "@chipmunkcol:registry": "https://npm.pkg.github.com/"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chipmunkcol/css-module-custom-sweetalert2.git"
