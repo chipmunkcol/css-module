@@ -1,5 +1,5 @@
 {
-  "name": "@chipmunkcol/css-module",
+  "name": "@chipmunkcol/css-module-custom-sweetalert2",
   "version": "0.1.7",
   "description": "",
   "main": "src/index.js",
