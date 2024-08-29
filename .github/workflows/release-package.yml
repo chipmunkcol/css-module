@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  setup-build-deploy:
+  setup-build-deploy-release:
     name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
     permissions:
@@ -27,6 +27,24 @@ jobs:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
+
+  deploy-package:
+    needs: setup-build-deploy-release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          registry-url: "https://registry.npmjs.org"
+      - run: npm ci
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 #   build:
 #     needs: setup-build-deploy
 #     runs-on: ubuntu-latest
